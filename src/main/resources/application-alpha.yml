@@ -1,0 +1,82 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+#eureka server settings
+eureka:
+  instance:
+    hostname: local
+  server:
+    #org.springframework.cloud.netflix.eureka.server.EurekaServerConfigBean
+    #保护模式下，删除心跳检测异常的服务
+    enable-replicated-request-compression: true
+    #获取不到服务实例时，等待的时间（ms）
+    wait-time-in-ms-when-sync-empty: 0
+    #自我保护模式
+    enable-self-preservation: true
+    #复活阀值
+    renewal-percent-threshold: 0.85
+    #阀值更新时间间隔
+    renewal-threshold-update-interval-ms: 900000
+    #集群eureka节点更新时间间隔
+    peer-eureka-nodes-update-interval-ms: 600000
+    #集群里尝试复制次数
+    number-of-replication-retries: 5
+    #集群更新时间间隔
+    peer-eureka-status-refresh-time-interval-ms: 30000
+    #集群节点连接超时时间
+    peer-node-connect-timeout-ms: 200
+    #读取集群节点超时时间
+    peer-node-read-timeout-ms: 200
+    #集群总连接服务
+    peer-node-total-connections: 1000
+    #http连接的总数
+    peer-node-total-connections-per-host: 500
+    remote-region-connection-idle-timeout-seconds: 30
+    #单一服务启动时，同步次数
+    registry-sync-retries: 5
+    #再次获取注册信息
+    registry-sync-retry-wait-ms: 30000
+
+    min-threads-for-peer-replication: 5
+    min-threads-for-status-replication: 1
+
+  client:
+    #获取注册信息的时间间隔
+    registry-fetch-interval-seconds: 10
+#    instance-info-replication-interval-seconds: 30
+#    initial-instance-info-replication-interval-seconds: 40
+#    eureka-service-url-poll-interval-seconds: 0
+#    g-zip-content: true
+    #超时读取之前需要等待的时间
+#    eureka-server-read-timeout-seconds: 8
+    #超时连接之前等待时间
+#    eureka-server-connect-timeout-seconds: 5
+    #服务器容许服务器连接的总数
+#    eureka-server-total-connections: 200
+    #服务器主机数
+#    eureka-server-total-connections-per-host: 50
+    #向服务器注册信息，集群情况下设置为true
+    register-with-eureka: false
+    #获取注册信息
+    fetch-registry: false
+
+#    region: ch-north-1 #实例所在的区域
+    #是否在同一区域，true统一区域，false不同区域
+#    prefer-same-zone-eureka: false
+    #允许重定向
+#    allow-redirects: true
+#    availability-zones:
+
+#    service-url:
+#      defaultZone: http://16.158.50.143:8761/eureka
+
+#logging settings
+logging:
+  config: classpath:logbak-spring.xml
+logback:
+  logdir: /var/log/spring-cloud/
+  appname: register-server

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: register-server-2011
+
+server:
+  port: 2011
+
+#eureka server settings
+eureka:
+  instance:
+    hostname: peer2
+  server:
+    enable-replicated-request-compression: false
+    wait-time-in-ms-when-sync-empty: 0
+  client:
+    registry-fetch-interval-seconds: 10
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://peer1:2010/eureka,http://peer2:2011/eureka
+
+#logging settings
+#logging:
+#  config: classpath:logbak-spring.xml
+#logback:
+#  logdir: /opt/club/apps/log/
+#  appname: register-server
