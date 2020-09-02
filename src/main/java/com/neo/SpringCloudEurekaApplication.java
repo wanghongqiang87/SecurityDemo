@@ -15,7 +15,7 @@ public class SpringCloudEurekaApplication {
 		SpringApplication.run(SpringCloudEurekaApplication.class, args);
 	}
 
-	@GetMapping
+	@GetMapping("/hello")
 	public String sayHello(String name) {
 		return "welcome to java" + name;
 	}
