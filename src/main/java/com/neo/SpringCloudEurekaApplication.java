@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@EnableEurekaServer
+//@EnableEurekaServer
 @RestController
 public class SpringCloudEurekaApplication {
 
